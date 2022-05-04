@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="logout_user" method="POST">
+  
+    {% csrf_token %}
+    {% if 'username' in request.session %}
+        <button type="submit" class="btn btn-outline-dark pull-right" style="margin-right: 10%;">Logout</button>
+    
+    {% endif %}  
+</form>
+    
+    
+      
+  
+<br>
+<br>
+<br>
+
+<section style=" padding-bottom:35%;">
+    <div class="mask d-flex align-items-center h-0 gradient-custom-3">
+      <div class="container h-0">
+        <div class="row d-flex justify-content-center align-items-center h-0">
+          <div class="col-12 col-md-8 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 5px; background: rgba(255,255,255,0.5) ; color:#743c2c; ">
+              <div class="card-body p-5">
+                <h2 class="text-uppercase text-center mb-4">Text To Speech</h2>
+
+                    <form action="txt_sp" method="GET" id="txt_sp">
+
+                        {% csrf_token %}
+
+
+                        <div class=" form-outline mb-3" style="margin-top: 20px;">
+                            <textarea id="form19" class="md-textarea form-control" rows="10" placeholder="Type Here..." name="text"></textarea>
+                        
+                        </div>
+
+
+                        <div class="d-flex ">
+                            <button type="submit" id="btn1" class="btn pull-right btn-lg gradient-custom-3 text-body" name="button" style="background-color: #63f2ff; color:white;">Submit</button>
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    {% endblock %}

@@ -20,6 +20,7 @@ from django.urls import path
 from django.urls.conf import include
 
 urlpatterns = [
+    path('', include('speechText.urls')),
     path('', include('main.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="logout_user" method="POST">
+  
+    {% csrf_token %}
+    {% if 'username' in request.session %}
+        <button type="submit" class="btn btn-outline-dark pull-right" style="margin-right: 10%;">Logout</button>
+    
+    {% endif %}  
+</form>
+    
+    
+      
+  
+<br>
+<br>
+<br>
+
+               
+
+               <form action="speechText" method="post">
+                   {% csrf_token %}
+                   <div class="container">
+                    <div class="row">
+                      <div class="col text-center">
+                        <button class="btn btn-lg btn-info" style="width:16% ;font-weight:500;">SPEAK</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <br>
+                  <br>
+                  <br>
+
+                   {% if message %}
+
+                   <i><h1 style="color:#fff; font-weight:500; text-align:center;" id="h">{{message}}</h1></i>
+                     <br>
+                   {% endif %}
+               </form>
+  
+
+{% endblock %}

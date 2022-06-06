@@ -18,10 +18,7 @@ def main(request):
             user = User.objects.create_user(username=username, email=email, password=password)
             user.save();
             print("user created")
-            if 'deaf' in request.POST:
-                return render(request,'login.html')
-            if 'dumb' in request.POST:
-                return render(request,'login1.html')
+            return render(request,'login.html')
     else:
         return render(request,'signup.html') 
 
@@ -29,7 +26,7 @@ def main(request):
 def login_user(request):
 
     if 'username' in request.session:
-        return render(request,'dumb.html')
+        return render(request,'option.html')
 
     if request.method == 'POST': 
         username = request.POST.get('username')
@@ -40,48 +37,18 @@ def login_user(request):
             return redirect("/login_user")
         else:
             request.session['username'] = username
-            return redirect('dumb')
+            return render(request,"login.html")
 
     else:
         return render(request,'login.html')
 
-def login_user1(request):
-
-    if 'username' in request.session:
+def option(request):
+    if 'deaf' in request.POST:
         return render(request,'deaf.html')
-
-    if request.method == 'POST': 
-        username = request.POST.get('username')
-        password = request.POST.get('password') 
-
-        check_user = User.objects.filter(username=username, password=password)
-        if check_user:
-            return redirect("/login_user")
-        else:
-            request.session['username'] = username
-            return redirect('speechText')
-
-    else:
-        return render(request,'login.html')
-
-def login_user2(request):
-
-    if 'username' in request.session:
-        return render(request,'blind.html')
-
-    if request.method == 'POST': 
-        username = request.POST.get('username')
-        password = request.POST.get('password') 
-
-        check_user = User.objects.filter(username=username, password=password)
-        if check_user:
-            return redirect("/login_user")
-        else:
-            request.session['username'] = username
-            return redirect('blind')
-
-    else:
-        return render(request,'login.html')
+    if 'dumb' in request.POST:
+        return render(request,'dumb.html')
+    if 'blind' in request.POST:
+        return render(request,"blind.html")
 
 
 def logout_user(request):
@@ -101,4 +68,4 @@ def txt_sp(request):
     obj=pyttsx3.init()
     obj.say(value)
     obj.runAndWait()
-    return redirect('/login_user')
+    return redirect('/dumb')

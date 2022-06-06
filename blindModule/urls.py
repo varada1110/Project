@@ -2,6 +2,6 @@ from django.urls import path
 from . import views
 urlpatterns = [
 
-    path('speechText', views.speechText, name='speechText'),
+    path('blindModule', views.blindModule, name='blindModule'),
     
 ]

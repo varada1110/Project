@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="logout_user" method="POST">
+  
+    {% csrf_token %}
+    {% if 'username' in request.session %}
+        <button type="submit" class="btn btn-outline-dark pull-right" style="margin-right: 10%;">Logout</button>
+    
+    {% endif %}  
+</form>
+    
+            <form action="blindModule" method="get">
+                {% csrf_token %}
+                <div class="container">
+                <div class="row">
+                <div class="col text-center">
+
+                    <button class="btn btn-lg btn-info" style="width:16% ;font-weight:500;">CAPTURE</button>
+                    
+                    {% if caption %}
+
+                    <i><h1 style="color:#fff; font-weight:500; text-align:center;" id="h" name="caption">{{caption}}</h1></i>
+                    <br>
+
+                    {% endif %}
+            
+                </div>
+                </div>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </form>
+
+        
+        
+      
+  
+<br>
+<br>
+<br>
+
+
+
+
+
+
+{% endblock %}
